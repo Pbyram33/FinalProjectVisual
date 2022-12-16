@@ -421,10 +421,12 @@ public class PokemonProject {
         }
          //JOptionPane.showMessageDialog(null, pikachu.value + " " + meowth.value + " " + riolu.value + " " + sneasel.value + " " + roselia.value);
         if(pikachu.value >= meowth.value & pikachu.value >= riolu.value & pikachu.value >= sneasel.value & pikachu.value >= roselia.value) {
+            // code for images "taken" from https://docs.oracle.com/javase/7/docs/api/java/awt/Image.html
             ImageIcon icon = new ImageIcon("Pikachu.png");
             Image pikaPic = icon.getImage();
             Image scaledPikaPic = pikaPic.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(scaledPikaPic);
+            // code end for all image codes below as well as the images for my items, not sure if I had to credit this
             JOptionPane.showMessageDialog(null, "Your result: Pikachu!", "Result!", JOptionPane.INFORMATION_MESSAGE, icon);
             player = pikachu;
         }
