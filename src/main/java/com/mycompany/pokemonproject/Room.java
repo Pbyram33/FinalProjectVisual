@@ -14,25 +14,24 @@ public class Room {
     protected String text;
     private Item item;
     private int n, s, w, e;
-    ArrayList<Path> Paths = new ArrayList<Path>();
     
-    public Room(String name, String text, int n2, int s2, int w2, int e2) {
+    public Room(String name, String text, int n, int s, int w, int e) {
         this.name = name;
         this.text = text;
-        this.n = n2;
-        this.s = s2;
-        this.e = e2;
-        this.w = w2;       
+        this.n = n;
+        this.s = s;
+        this.e = e;
+        this.w = w;       
     }
     
     public Item getItem() {
         return this.item;
     }
-    
+     
     public void setItem(Item item2) {
         item = item2;
     }
-    
+    // code from https://www.youtube.com/watch?v=EluNyKun6Lk&t=48s
     public int getN() {
         return n;
     }
@@ -64,4 +63,5 @@ public class Room {
     public void setE(int e2) {
         this.e = e2;
     }
+    // code ends
 }
