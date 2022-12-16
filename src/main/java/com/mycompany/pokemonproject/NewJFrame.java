@@ -5,6 +5,9 @@
 package com.mycompany.pokemonproject;
 import static com.mycompany.pokemonproject.PokemonProject.player;
 import java.awt.Font;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +21,12 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
 
-        int healthVal = PokemonProject.player.getHealth();
+        int healthVal = PokemonProject.player.getEnergy();
         healthLabel.setText(String.valueOf(healthVal));
-        healthLabel.setText("75");
         storyscreen.setText(player.location.text);
         setTitle(player.location.name);
     }
-    
+    // code from https://www.youtube.com/watch?v=EluNyKun6Lk&t=48s
     void updateOutput(int roomNumber) {
         String temp;
         if (roomNumber == Path.NoPath) {
@@ -35,6 +37,10 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         storyscreen.setText(player.location.text);
     }
+    // code ends
+    
+       
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +64,7 @@ public class NewJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new Font("Ariel", Font.PLAIN, 20));
-        jLabel2.setText("Health:");
+        jLabel2.setText("Energy:");
 
         healthLabel.setFont(new Font("Ariel", Font.PLAIN, 20));
 
@@ -98,6 +104,11 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Bag");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         storyscreen.setFont(new Font("Ariel", Font.PLAIN, 20));
 
@@ -166,24 +177,188 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void westButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westButtonActionPerformed
-        updateOutput(PokemonProject.movePlayerTo(Path.WEST)); // TODO add your handling code here:
+        updateOutput(PokemonProject.movePlayerTo(Path.WEST));
+        if (PokemonProject.player.location.getN() == -1) {
+            northButton.setEnabled(false);
+        }
+        else {
+            northButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getS() == -1) {
+            southButton.setEnabled(false);
+        }
+        else {
+            southButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getW() == -1) {
+            westButton.setEnabled(false);
+        }
+        else {
+            westButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getE() == -1) {
+            eastButton.setEnabled(false);
+        }
+        else {
+            eastButton.setEnabled(true);
+        }
     }//GEN-LAST:event_westButtonActionPerformed
 
     private void northButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_northButtonActionPerformed
-        updateOutput(PokemonProject.movePlayerTo(Path.NORTH));    // TODO add your handling code here:
+        updateOutput(PokemonProject.movePlayerTo(Path.NORTH));
+        if (PokemonProject.player.location.getN() == -1) {
+            northButton.setEnabled(false);
+        }
+        else {
+            northButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getS() == -1) {
+            southButton.setEnabled(false);
+        }
+        else {
+            southButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getW() == -1) {
+            westButton.setEnabled(false);
+        }
+        else {
+            westButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getE() == -1) {
+            eastButton.setEnabled(false);
+        }
+        else {
+            eastButton.setEnabled(true);
+        }
     }//GEN-LAST:event_northButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        Object[] itemPot = { "Take Item", "Leave It",};
+        if (player.location == PokemonProject.map.get(2)) {
+            ImageIcon icon = new ImageIcon("Potion.png");
+            Image potionPic = icon.getImage();
+            Image scaledpotionPic = potionPic.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(scaledpotionPic);
+                int itemResponse = JOptionPane.showOptionDialog(null, PokemonProject.potion.getDesc(), PokemonProject.potion.getName(), JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, icon, itemPot, 0);
+                switch (itemResponse) {
+                    case 0:
+                        PokemonProject.player.inventory.add(PokemonProject.potion);
+                        break;
+                        
+                    case 1:
+                        break;
+                }
+                
+            }
+        if (player.location == PokemonProject.map.get(4)) {
+            ImageIcon icon = new ImageIcon("Oranberry.png");
+            Image oranPic = icon.getImage();
+            Image scaledoranPic = oranPic.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(scaledoranPic);
+                int itemResponse = JOptionPane.showOptionDialog(null, PokemonProject.oranberry.getDesc(), PokemonProject.oranberry.getName(), JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, icon, itemPot, 0);
+                switch (itemResponse) {
+                    case 0:
+                        PokemonProject.player.inventory.add(PokemonProject.oranberry);
+                        break;
+                        
+                    case 1:
+                        break;
+                }
+                
+            }
+        if (player.location == PokemonProject.map.get(5)) {
+            ImageIcon icon = new ImageIcon("Plush.png");
+            Image plushPic = icon.getImage();
+            Image scaledplushPic = plushPic.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(scaledplushPic);
+                int itemResponse = JOptionPane.showOptionDialog(null, PokemonProject.plush.getDesc(), PokemonProject.plush.getName(), JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, icon, itemPot, 0);
+                switch (itemResponse) {
+                    case 0:
+                        PokemonProject.player.inventory.add(PokemonProject.plush);
+                        break;
+                        
+                    case 1:
+                        break;
+                }
+                
+            }
+        if (player.location == PokemonProject.map.get(12)) {
+            ImageIcon icon = new ImageIcon("Baseball1.png");
+            Image baseballPic = icon.getImage();
+            Image scaledbaseballPic = baseballPic.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(scaledbaseballPic);
+                int itemResponse = JOptionPane.showOptionDialog(null, PokemonProject.baseball.getDesc(), PokemonProject.baseball.getName(), JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, icon, itemPot, 0);
+                switch (itemResponse) {
+                    case 0:
+                        PokemonProject.player.inventory.add(PokemonProject.baseball);
+                        break;
+                        
+                    case 1:
+                        break;
+                }
+                
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void southButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_southButtonActionPerformed
-        updateOutput(PokemonProject.movePlayerTo(Path.SOUTH));    // TODO add your handling code here:
+        updateOutput(PokemonProject.movePlayerTo(Path.SOUTH));
+        if (PokemonProject.player.location.getN() == -1) {
+            northButton.setEnabled(false);
+        }
+        else {
+            northButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getS() == -1) {
+            southButton.setEnabled(false);
+        }
+        else {
+            southButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getW() == -1) {
+            westButton.setEnabled(false);
+        }
+        else {
+            westButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getE() == -1) {
+            eastButton.setEnabled(false);
+        }
+        else {
+            eastButton.setEnabled(true);
+        }
     }//GEN-LAST:event_southButtonActionPerformed
 
     private void eastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eastButtonActionPerformed
-        updateOutput(PokemonProject.movePlayerTo(Path.EAST));   // TODO add your handling code here:
+        updateOutput(PokemonProject.movePlayerTo(Path.EAST));
+        if (PokemonProject.player.location.getN() == -1) {
+            northButton.setEnabled(false);
+        }
+        else {
+            northButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getS() == -1) {
+            southButton.setEnabled(false);
+        }
+        else {
+            southButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getW() == -1) {
+            westButton.setEnabled(false);
+        }
+        else {
+            westButton.setEnabled(true);
+        }
+        if (PokemonProject.player.location.getE() == -1) {
+            eastButton.setEnabled(false);
+        }
+        else {
+            eastButton.setEnabled(true);
+        }
     }//GEN-LAST:event_eastButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new InvWin().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,14 +396,14 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton eastButton;
-    protected javax.swing.JLabel healthLabel;
+    protected static javax.swing.JButton eastButton;
+    protected static javax.swing.JLabel healthLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton northButton;
-    private javax.swing.JButton southButton;
+    protected static javax.swing.JButton northButton;
+    protected static javax.swing.JButton southButton;
     protected static javax.swing.JLabel storyscreen;
-    private javax.swing.JButton westButton;
+    protected static javax.swing.JButton westButton;
     // End of variables declaration//GEN-END:variables
 }

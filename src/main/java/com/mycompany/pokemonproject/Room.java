@@ -25,6 +25,14 @@ public class Room {
         this.w = w2;       
     }
     
+    public Item getItem() {
+        return this.item;
+    }
+    
+    public void setItem(Item item2) {
+        item = item2;
+    }
+    
     public int getN() {
         return n;
     }

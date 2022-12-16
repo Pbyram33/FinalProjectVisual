@@ -14,13 +14,14 @@ public class Pokemon {
     protected String name;
     protected int value;
     protected Room location;
-    private int health;
+    protected int energy;
+    protected int energyMax;
     private int strength;
     private int speed;
     ArrayList<Item> inventory = new ArrayList<Item>();
     
-    public int getHealth() {
-        return this.health;
+    public int getEnergy() {
+        return this.energy;
     }
     
     public void setRoom(Room room2) {
@@ -31,13 +32,21 @@ public class Pokemon {
         return this.location;
     }
     
-    public Pokemon(String name, int value, int health, int strength, int speed, Room location) {
-        assert health >= 1;
-        assert health <= 100;
+    public void getHealedPotion() {
+    energy = Math.min(energy + PokemonProject.potion.value, PokemonProject.player.energyMax);
+    }
+    public void getHealedBerry() {
+    energy = Math.min(energy + PokemonProject.oranberry.value, PokemonProject.player.energyMax);
+    }
+    
+    public Pokemon(String name, int value, int energy, int energyMax, int strength, int speed, Room location) {
+        assert energy >= 1;
+        assert energy <= 100;
         
         this.name = name;
         this.value = value;
-        this.health = health;
+        this.energy = energy;
+        this.energyMax = energyMax;
         this.strength = strength;
         this.speed = speed;
         this.location = location;

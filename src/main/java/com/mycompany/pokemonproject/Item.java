@@ -10,8 +10,12 @@ package com.mycompany.pokemonproject;
  */
 public class Item {
     protected String name;
-    private String desc;
-    private int value;    
+    protected String desc;
+    protected int value;
+    
+    public String getName() {
+        return this.name;
+    }
     
     public String getDesc() {
     return this.desc;
