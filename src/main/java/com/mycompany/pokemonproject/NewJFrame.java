@@ -202,6 +202,7 @@ public class NewJFrame extends javax.swing.JFrame {
         else {
             eastButton.setEnabled(true);
         }
+        setTitle(player.location.name);
     }//GEN-LAST:event_westButtonActionPerformed
 
     private void northButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_northButtonActionPerformed
@@ -230,6 +231,7 @@ public class NewJFrame extends javax.swing.JFrame {
         else {
             eastButton.setEnabled(true);
         }
+        setTitle(player.location.name);
     }//GEN-LAST:event_northButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -326,6 +328,7 @@ public class NewJFrame extends javax.swing.JFrame {
         else {
             eastButton.setEnabled(true);
         }
+        setTitle(player.location.name);
     }//GEN-LAST:event_southButtonActionPerformed
 
     private void eastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eastButtonActionPerformed
@@ -354,6 +357,7 @@ public class NewJFrame extends javax.swing.JFrame {
         else {
             eastButton.setEnabled(true);
         }
+        setTitle(player.location.name);
     }//GEN-LAST:event_eastButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
