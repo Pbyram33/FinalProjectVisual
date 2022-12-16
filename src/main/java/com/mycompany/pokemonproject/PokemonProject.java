@@ -324,7 +324,7 @@ public class PokemonProject {
                     break;
         }
         Object[] q6 = { "Look up to see who wrote it", "Ignore the prankster", "Get mad and yell at them"};
-        int response6 = JOptionPane.showOptionDialog(null, "Someone shouts 'Who wrote gullible on the cieling??' What do you do?", "Question 6", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q6, 0);
+        int response6 = JOptionPane.showOptionDialog(null, "Someone shouts 'Who wrote gullible on the ceiling??' What do you do?", "Question 6", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, q6, 0);
         switch (response6) {
                 case 0: 
                     pikachu.value = pikachu.value + 5;
